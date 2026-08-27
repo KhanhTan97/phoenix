@@ -14,12 +14,14 @@ import App from "@/App";
 import Register from "@/pages/Register";
 import Login from "@/pages/Login";
 import ResetLink from "@/pages/ResetLink";
+import ResetPassword from "@/pages/ResetPassword";
 
 /**
  * Actions
  */
 import registerAction from "@/router/actions/registerAction";
 import loginAction from "@/router/actions/loginAction";
+import resetLinkAction from "@/router/actions/resetLinkAction";
 
 /**
  * Loaders
@@ -47,6 +49,11 @@ const router = createBrowserRouter([
   {
     path: "/reset-link",
     element: <ResetLink />,
+    action: resetLinkAction,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
   },
 ]);
 

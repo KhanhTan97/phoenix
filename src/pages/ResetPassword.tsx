@@ -19,26 +19,27 @@ import { useSnackbar } from "@/hooks/useSnackbar";
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 
-const ResetLink = () => {
+const ResetPassword = () => {
   const navigation = useNavigation();
 
-  const actionData = useActionData();
+  const error = useActionData();
+
+  console.log(error);
 
   const { showSnackbar } = useSnackbar();
 
   useEffect(() => {
-    if (actionData) {
+    if (error?.error) {
       showSnackbar({
-        message: actionData.message,
-        type: actionData.ok ? "info" : "error",
-        timeout: 8000,
+        message: error.error,
+        type: "error",
       });
     }
-  }, [actionData, showSnackbar]);
+  }, [error, showSnackbar]);
 
   return (
     <>
-      <PageTitle title="Reset password" />
+      <PageTitle title="New password" />
 
       <div className="relative w-screen h-dvh ring-2 p-2 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] lg:gap-2">
         <div className="flex flex-col p-4">
@@ -62,21 +63,21 @@ const ResetLink = () => {
 
           <div className="flex flex-col gap-2 max-w-120 w-full mx-auto">
             <h2 className="text-display-small text-on-background text-center">
-              Forgot your password ?
+              Set a new password
             </h2>
 
             <p className="text-body-large text-on-surface-variant mt-1 mb-5 text-center px-2">
-              Enter your email, we&apos;ll send a password reset link.
+              Please choose a password that hasn&apos;t been used before. Must
+              be at least 8 characters.
             </p>
 
             <Form method="POST" className="grid grid-cols-1 gap-4">
               <TextField
                 fieldClasses="w-full"
-                type="email"
-                name="email"
-                label="Email"
-                placeholder="Email"
-                helperText="The verification link sent to your email address will be valid for 1 hour."
+                type="password"
+                name="password"
+                label="New password"
+                placeholder="New password"
                 required={true}
                 autoFocus={true}
               />
@@ -89,7 +90,7 @@ const ResetLink = () => {
                 {navigation.state === "submitting" ? (
                   <CircularProgress size="small" />
                 ) : (
-                  "Get link"
+                  "Reset password"
                 )}
               </Button>
             </Form>
@@ -118,4 +119,4 @@ const ResetLink = () => {
   );
 };
 
-export default ResetLink;
+export default ResetPassword;
