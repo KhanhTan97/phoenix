@@ -26,7 +26,7 @@ const registerAction: ActionFunction = async ({ request }) => {
   } catch (error) {
     if (error instanceof AppwriteException)
       return {
-        error: error.message,
+        message: error.message,
       };
   }
 

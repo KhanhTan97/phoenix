@@ -18,7 +18,6 @@ const resetLinkAction: ActionFunction = async ({ request }) => {
     };
   } catch (error) {
     if (error instanceof AppwriteException) {
-      console.log(`Error getting a reset password link: ${error.message}`);
 
       return {
         ok: false,

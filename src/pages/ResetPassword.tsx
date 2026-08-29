@@ -29,9 +29,9 @@ const ResetPassword = () => {
   const { showSnackbar } = useSnackbar();
 
   useEffect(() => {
-    if (error?.error) {
+    if (error?.message) {
       showSnackbar({
-        message: error.error,
+        message: error.message,
         type: "error",
       });
     }
@@ -76,7 +76,7 @@ const ResetPassword = () => {
                 fieldClasses="w-full"
                 type="password"
                 name="password"
-                label="New password"
+                label="Password"
                 placeholder="New password"
                 required={true}
                 autoFocus={true}

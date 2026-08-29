@@ -15,10 +15,19 @@ type ButtonProps = {
   type?: "submit" | "reset" | "button";
 };
 
+type IconButtonProps = {
+  classes?: string;
+  icon?: string;
+  size?: string;
+  children?: ReactNode;
+  disabled?: boolean;
+  title?: string;
+};
+
 /**
  * Common button
  */
-export const Button = ({
+const Button = ({
   classes = "",
   variant = "filled",
   color = "primary",
@@ -39,3 +48,33 @@ export const Button = ({
     </button>
   );
 };
+
+/**
+ * Icon button
+ */
+const IconButton = ({
+  classes = "",
+  icon,
+  size = "",
+  children,
+  disabled,
+  title,
+}: IconButtonProps) => {
+  return (
+    <button
+      className={`icon-btn ${size} ${classes}`}
+      disabled={disabled}
+      title={title}
+    >
+      {children}
+
+      {!children && (
+        <span className="material-symbols-rounded icon">{icon}</span>
+      )}
+
+      <div className="state-layer"></div>
+    </button>
+  );
+};
+
+export { Button, IconButton };
