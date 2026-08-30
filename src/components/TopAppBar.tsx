@@ -1,7 +1,12 @@
 /**
  * Node modules
  */
-import { Link, useNavigation } from "react-router";
+import { Link, useLoaderData, useNavigate, useNavigation } from "react-router";
+
+/**
+ * Custom hooks
+ */
+import { useToggle } from "@/hooks/useToggle";
 
 /**
  * Assets
@@ -17,11 +22,31 @@ import Menu from "./Menu";
 import MenuItem from "./MenuItem";
 import { LinearProgress } from "./Progress";
 import { AnimatePresence } from "framer-motion";
+import logout from "@/utils/logout";
 
 const TopAppBar = () => {
   const navigation = useNavigation();
 
+  const navigate = useNavigate();
+
+  const { user } = useLoaderData();
+  console.log(user);
+
+  const [showMenu, setShowMenu] = useToggle();
+
   const isNormalLoad = navigation.state === "loading" && !navigation.formData;
+
+  const handleLogout = () => {
+    if (typeof navigate === "function") {
+      return logout(navigate);
+    }
+  };
+
+  const handleToggleMenu = () => {
+    if (typeof setShowMenu === "function") {
+      setShowMenu();
+    }
+  };
 
   return (
     <header className="relative flex justify-between items-center h-16 px-4">
@@ -47,12 +72,12 @@ const TopAppBar = () => {
         </Link>
       </div>
       <div className="menu-wrapper">
-        <IconButton>
-          <Avatar name="Freikishou" />
+        <IconButton onClick={handleToggleMenu}>
+          <Avatar name={user.name} />
         </IconButton>
 
-        <Menu>
-          <MenuItem labelText="Log out" />
+        <Menu classes={showMenu ? "active" : ""}>
+          <MenuItem labelText="Log out" onClick={handleLogout} />
         </Menu>
       </div>
 

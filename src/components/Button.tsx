@@ -22,6 +22,7 @@ type IconButtonProps = {
   children?: ReactNode;
   disabled?: boolean;
   title?: string;
+  onClick?: () => void;
 };
 
 /**
@@ -59,12 +60,14 @@ const IconButton = ({
   children,
   disabled,
   title,
+  onClick,
 }: IconButtonProps) => {
   return (
     <button
       className={`icon-btn ${size} ${classes}`}
       disabled={disabled}
       title={title}
+      onClick={onClick}
     >
       {children}
 

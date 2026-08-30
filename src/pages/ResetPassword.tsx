@@ -24,8 +24,6 @@ const ResetPassword = () => {
 
   const error = useActionData();
 
-  console.log(error);
-
   const { showSnackbar } = useSnackbar();
 
   useEffect(() => {

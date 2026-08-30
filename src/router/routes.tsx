@@ -31,11 +31,13 @@ import registerLoader from "@/router/loaders/registerLoader";
 import loginLoader from "@/router/loaders/loginLoader";
 import resetLinkLoader from "@/router/loaders/resetLinkLoader";
 import resetPasswordLoader from "@/router/loaders/resetPasswordLoader";
+import appLoader from "@/router/loaders/appLoader";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    loader: appLoader,
   },
   {
     path: "/register",

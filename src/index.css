@@ -768,11 +768,32 @@ html.dark {
     border-radius: var(--radius-extra-small);
     box-shadow: var(--shadow-elevation-2);
     z-index: 20;
-    transform-origin: top right;
     scale: 0.75;
     opacity: 0;
     visibility: hidden;
-    transition: transform-origin, opacity, visibility;
+    transition:
+      transform var(--transition-duration-short-3) var(--ease-standard),
+      opacity var(--transition-duration-short-3) var(--ease-standard),
+      visibility var(--transition-duration-short-3) var(--ease-standard);
+    transform-origin: top right;
+  }
+
+  .menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .menu-item {
+    --state-layer-bg: var(--on-surface);
+    color: var(--on-surface);
+    font-size: var(--text-label-large);
+    height: var(--spacing-12);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-inline: var(--spacing-3);
+    cursor: pointer;
   }
 }
 
