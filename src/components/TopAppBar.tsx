@@ -1,7 +1,7 @@
 /**
  * Node modules
  */
-import { Link, useLoaderData, useNavigate, useNavigation } from "react-router";
+import { useLoaderData, useNavigate, useNavigation } from "react-router";
 
 /**
  * Custom hooks
@@ -11,7 +11,6 @@ import { useToggle } from "@/hooks/useToggle";
 /**
  * Assets
  */
-import { logoDark, logoLight } from "@/assets/assets";
 
 /**
  * Components
@@ -23,6 +22,7 @@ import MenuItem from "./MenuItem";
 import { LinearProgress } from "./Progress";
 import { AnimatePresence } from "framer-motion";
 import logout from "@/utils/logout";
+import Logo from "./Logo";
 
 const TopAppBar = () => {
   const navigation = useNavigation();
@@ -53,23 +53,7 @@ const TopAppBar = () => {
       <div className="flex items-center justify-center gap-1">
         <IconButton icon="menu" title="Menu" classes="lg:hidden" />
 
-        <Link to="/" className="min-w-max max-w-max h-6 lg:hidden">
-          <img
-            src={logoLight}
-            width={133}
-            height={24}
-            alt="phoenix logo"
-            className="dark:hidden"
-          />
-
-          <img
-            src={logoDark}
-            width={133}
-            height={24}
-            alt="phoenix logo"
-            className="hidden dark:block"
-          />
-        </Link>
+        <Logo classes="lg:hidden" />
       </div>
       <div className="menu-wrapper">
         <IconButton onClick={handleToggleMenu}>

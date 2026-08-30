@@ -2,6 +2,7 @@
  * Node modules
  */
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 
 /**
  * Types
@@ -80,4 +81,27 @@ const IconButton = ({
   );
 };
 
-export { Button, IconButton };
+/**
+ * Extended fab
+ */
+const ExtendedFab = ({
+  href = "/",
+  text,
+  classes = "",
+}: {
+  href?: string;
+  text?: string;
+  classes?: string;
+}) => {
+  return (
+    <Link to={href} className={`extended-fab ${classes}`}>
+      <span className="material-symbols-rounded">add</span>
+
+      <span className="truncate">{text}</span>
+
+      <div className="state-layer"></div>
+    </Link>
+  );
+};
+
+export { Button, IconButton, ExtendedFab };

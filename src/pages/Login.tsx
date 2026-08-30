@@ -6,7 +6,7 @@ import { Form, Link, useActionData, useNavigation } from "react-router";
 /**
  * Custom modules
  */
-import { banner, logoDark, logoLight } from "@/assets/assets";
+import { banner } from "@/assets/assets";
 
 /**
  * Components
@@ -18,6 +18,7 @@ import { CircularProgress, LinearProgress } from "@/components/Progress";
 import { useSnackbar } from "@/hooks/useSnackbar";
 import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import Logo from "@/components/Logo";
 
 const Login = () => {
   const navigation = useNavigation();
@@ -43,23 +44,7 @@ const Login = () => {
 
       <div className="relative w-screen h-dvh ring-2 p-2 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] lg:gap-2">
         <div className="flex flex-col p-4">
-          <Link to="/" className="max-w-max mb-auto mx-auto lg:mx-0">
-            <img
-              src={logoLight}
-              alt="phoenix logo"
-              width={133}
-              height={44}
-              className="dark:hidden"
-            />
-
-            <img
-              src={logoDark}
-              alt="phoenix logo"
-              width={133}
-              height={44}
-              className="hidden dark:block"
-            />
-          </Link>
+          <Logo classes="mb-auto mx-auto lg:mx-0" />
 
           <div className="flex flex-col gap-2 max-w-120 w-full mx-auto">
             <h2 className="text-display-small text-on-background text-center">

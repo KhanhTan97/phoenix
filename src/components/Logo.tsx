@@ -8,7 +8,7 @@ import { logoDark, logoLight } from "@/assets/assets";
  */
 import { Link } from "react-router";
 
-const Logo = ({ classes = "" }: { classes: string }) => {
+const Logo = ({ classes = "" }: { classes?: string }) => {
   return (
     <Link to="/" className={`min-w-max max-w-max h-6 ${classes}`}>
       <img
