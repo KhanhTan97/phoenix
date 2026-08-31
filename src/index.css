@@ -591,7 +591,7 @@ html.dark {
     inset: 0;
     background-color: var(--state-layer-bg);
     opacity: 0;
-    transition: opacity var(--ease-legacy) var(--transition-duration-short-3);
+    transition: opacity var(--transition-duration-short-3) var(--ease-legacy);
     pointer-events: none;
     user-select: none;
     z-index: -10;
@@ -842,7 +842,7 @@ html.dark {
   .sidebar-inner {
     height: 100%;
     display: grid;
-    grid-template-rows: max-content max-content max-content 1fr max-content;
+    grid-template-rows: max-content max-content 1fr max-content;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     padding-inline: var(--spacing-3);
     opacity: 0;
@@ -888,11 +888,58 @@ html.dark {
   * Extended
   */
   .extended-fab {
+    --state-layer-bg: var(--on-primary-container);
     background: var(--primary-container);
     color: var(--on-primary-container);
     font-size: var(--text-label-large);
     max-width: max-content;
     display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    height: 56px;
+    padding-inline-start: var(--spacing-3);
+    padding-inline-end: var(--spacing-4);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-elevation-1);
+    transition: box-shadow var(--transition-duration-short-3)
+      var(--ease-standard);
+  }
+
+  .extended-fab:hover {
+    box-shadow: var(--shadow-elevation-2);
+  }
+
+  .extended-fab:focus {
+    box-shadow: var(--shadow-elevation-1);
+  }
+
+  .extended-fab.disabled {
+    background-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
+    color: var(--on-surface);
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /**
+  * Nav links
+  */
+  .nav-link {
+    --state-layer-bg: var(--on-surface-variant);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    font-size: var(--text-label-large);
+    color: var(--on-surface-variant);
+    height: var(--spacing-9);
+    border-radius: var(--radius-full);
+    padding-inline-start: var(--spacing-4);
+    padding-inline-end: var(--spacing-10);
+  }
+
+  .nav-link.active {
+    --state-layer-bg: var(--on-secondary-container);
+    background-color: var(--secondary-container);
+    color: var(--on-secondary-container);
   }
 }
 

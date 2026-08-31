@@ -5,14 +5,28 @@ import PageTitle from "@/components/PageTitle";
 import TopAppBar from "@/components/TopAppBar";
 import Sidebar from "./components/Sidebar";
 
+/**
+ * Hooks
+ */
+import { useToggle } from "./hooks/useToggle";
+
 const App = () => {
+  const [isSidebarOpen, toggleSidebar] = useToggle();
+  const sidebarOpen =
+    typeof isSidebarOpen === "boolean" ? isSidebarOpen : false;
+  const handleSidebarToggle =
+    typeof toggleSidebar === "function" ? toggleSidebar : () => undefined;
+
   return (
     <>
       <PageTitle title="Phoenix - chat to supercharge your ideas" />
 
       <div className="">
         {/* Sidebar */}
-        <Sidebar />
+        <Sidebar
+          isSidebarOpen={sidebarOpen}
+          toggleSidebar={handleSidebarToggle}
+        />
 
         <div className="">
           {/* Top app bar */}

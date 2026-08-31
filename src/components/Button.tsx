@@ -92,6 +92,7 @@ const ExtendedFab = ({
   href?: string;
   text?: string;
   classes?: string;
+  disabled?: boolean;
 }) => {
   return (
     <Link to={href} className={`extended-fab ${classes}`}>
