@@ -941,6 +941,41 @@ html.dark {
     background-color: var(--secondary-container);
     color: var(--on-secondary-container);
   }
+
+  .prompt-field-container {
+    --state-layer-bg: var(--on-surface-variant);
+    background-color: var(--surface-container);
+    min-height: var(--spacing-16);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    padding: var(--spacing-2);
+    cursor: text;
+  }
+
+  .prompt-field {
+    color: var(--on-surface);
+    font-size: var(--text-body-large);
+    position: relative;
+    outline: none;
+    flex-grow: 1;
+    margin-inline: var(--spacing-4);
+    padding-block: var(--spacing-3);
+    max-height: 230px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
+
+  .prompt-field::after {
+    content: attr(data-placeholder);
+    color: color-mix(in srgb, var(--on-surface-variant) 90%, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
 }
 
 /* =========================================================

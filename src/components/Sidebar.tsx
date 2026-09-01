@@ -1,4 +1,9 @@
 /**
+ * Node modules
+ */
+import { motion } from "framer-motion";
+
+/**
  * Components
  */
 import { NavLink } from "react-router";
@@ -16,19 +21,24 @@ type SidebarProps = {
 const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
   return (
     <>
-      <div className={`sidebar ${isSidebarOpen ? "active" : ""}`}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className={`sidebar ${isSidebarOpen ? "active" : ""}`}
+      >
         <div className="sidebar-inner">
           <div className="h-16 grid items-center px-4 mb-4">
             <Logo />
           </div>
-          <ExtendedFab text="New chat" classes="" onclick={toggleSidebar} />
+          <ExtendedFab text="New chat" classes="" onClick={toggleSidebar} />
           <div className="overflow-y-auto -me-2 pe-1">
             <p className="text-title-small h-9 grid items-center px-4">
               Recent
             </p>
             <nav>
               <div className="relative group">
-                <NavLink to="" className="nav-link">
+                <NavLink to="" className="nav-link" onClick={toggleSidebar}>
                   <span className="material-symbols-rounded icon-small">
                     chat_bubble
                   </span>
@@ -48,8 +58,11 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }: SidebarProps) => {
             &copy; 2026 codewithsadee
           </div>
         </div>
-      </div>
-      <div className={`overlay`}></div>
+      </motion.div>
+      <div
+        className={`overlay ${isSidebarOpen ? "active" : ""}`}
+        onClick={toggleSidebar}
+      ></div>
     </>
   );
 };

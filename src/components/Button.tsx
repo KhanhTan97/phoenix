@@ -88,14 +88,16 @@ const ExtendedFab = ({
   href = "/",
   text,
   classes = "",
+  onClick,
 }: {
   href?: string;
   text?: string;
   classes?: string;
   disabled?: boolean;
+  onClick?: () => void;
 }) => {
   return (
-    <Link to={href} className={`extended-fab ${classes}`}>
+    <Link to={href} className={`extended-fab ${classes}`} onClick={onClick}>
       <span className="material-symbols-rounded">add</span>
 
       <span className="truncate">{text}</span>

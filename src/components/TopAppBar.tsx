@@ -2,6 +2,7 @@
  * Node modules
  */
 import { useLoaderData, useNavigate, useNavigation } from "react-router";
+import { AnimatePresence } from "framer-motion";
 
 /**
  * Custom hooks
@@ -20,11 +21,14 @@ import Avatar from "./Avatar";
 import Menu from "./Menu";
 import MenuItem from "./MenuItem";
 import { LinearProgress } from "./Progress";
-import { AnimatePresence } from "framer-motion";
-import logout from "@/utils/logout";
 import Logo from "./Logo";
 
-const TopAppBar = () => {
+/**
+ * Utils
+ */
+import logout from "@/utils/logout";
+
+const TopAppBar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   const navigation = useNavigation();
 
   const navigate = useNavigate();
@@ -51,7 +55,12 @@ const TopAppBar = () => {
   return (
     <header className="relative flex justify-between items-center h-16 px-4">
       <div className="flex items-center justify-center gap-1">
-        <IconButton icon="menu" title="Menu" classes="lg:hidden" />
+        <IconButton
+          icon="menu"
+          title="Menu"
+          classes="lg:hidden"
+          onClick={toggleSidebar}
+        />
 
         <Logo classes="lg:hidden" />
       </div>
