@@ -2,6 +2,7 @@
  * Node modules
  */
 import { motion } from "framer-motion";
+import { Outlet, useParams } from "react-router";
 
 /**
  * Components
@@ -18,6 +19,8 @@ import Greetings from "./pages/Greetings";
 import PromptField from "./components/PromptField";
 
 const App = () => {
+  const params = useParams();
+
   const [isSidebarOpen, toggleSidebar] = useToggle();
   const sidebarOpen =
     typeof isSidebarOpen === "boolean" ? isSidebarOpen : false;
@@ -47,7 +50,7 @@ const App = () => {
 
           {/* Main content */}
           <div className="px-5 pb-5 flex flex-col overflow-y-auto">
-            <Greetings />
+            {params.conversationId ? <Outlet /> : <Greetings />}
           </div>
 
           {/* Prompt field */}

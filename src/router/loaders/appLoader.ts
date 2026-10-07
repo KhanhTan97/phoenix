@@ -22,13 +22,11 @@ const appLoader: LoaderFunction = async () => {
       import.meta.env.VITE_GEMINI_DB_ID,
       import.meta.env.VITE_GEMINI_CONVERSATIONS_ID,
       [
-        Query.select(["$id", "title"]),
+        Query.select(["$id", "title", "chats.*"]),
         Query.orderAsc("$createdAt"),
         Query.equal("user_id", appData.user?.$id ?? ""),
       ],
     );
-
-    console.log(appData);
   } catch (error) {
     if (error instanceof AppwriteException)
       console.log(`Error getting conversations: ${error.message}`);

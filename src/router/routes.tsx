@@ -15,6 +15,7 @@ import Register from "@/pages/Register";
 import Login from "@/pages/Login";
 import ResetLink from "@/pages/ResetLink";
 import ResetPassword from "@/pages/ResetPassword";
+import Conversation from "@/pages/Conversation";
 
 /**
  * Actions
@@ -23,6 +24,7 @@ import registerAction from "@/router/actions/registerAction";
 import loginAction from "@/router/actions/loginAction";
 import resetLinkAction from "@/router/actions/resetLinkAction";
 import resetPasswordAction from "./actions/resetPasswordAction";
+import appAction from "./actions/appAction";
 
 /**
  * Loaders
@@ -32,7 +34,7 @@ import loginLoader from "@/router/loaders/loginLoader";
 import resetLinkLoader from "@/router/loaders/resetLinkLoader";
 import resetPasswordLoader from "@/router/loaders/resetPasswordLoader";
 import appLoader from "@/router/loaders/appLoader";
-import appAction from "./actions/appAction";
+import conversationLoader from "./loaders/conversationLoader";
 
 const router = createBrowserRouter([
   {
@@ -42,10 +44,11 @@ const router = createBrowserRouter([
     action: appAction,
     children: [
       {
-        path: '/:converationId',
-        
-      }
-    ]
+        path: "/:conversationId",
+        element: <Conversation />,
+        loader: conversationLoader,
+      },
+    ],
   },
   {
     path: "/register",
