@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
  */
 import PageTitle from "@/components/PageTitle";
 import UserPrompt from "@/components/UserPrompt";
+import AiResponse from "@/components/AiResponse";
 
 /**
  * Types
@@ -32,7 +33,7 @@ const Conversation = () => {
             {/* UserPrompt */}
             <UserPrompt text={chat.user_prompt} />
 
-            <p>{chat.ai_response}</p>
+            <AiResponse aiResponse={chat.ai_response} />
           </div>
         ))}
       </motion.div>

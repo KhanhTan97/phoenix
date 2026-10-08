@@ -976,6 +976,38 @@ html.dark {
     transform: translateY(-50%);
     pointer-events: none;
   }
+
+  /* Markdown Content */
+  .markdown-content {
+    color: var(--on-surface);
+    padding-top: var(--spacing-1);
+    line-height: 1.75rem;
+  }
+
+  .markdown-content > :first-child {
+    margin-top: var(--spacing) !;
+  }
+
+  .markdown-content :where(h1, h2, h3, h4, h5, h6) {
+    font-size: var(--text-title-medium);
+    font-weight: 500;
+    margin-top: var(--spacing-8);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .markdown-content :where(p, pre, table) {
+    margin-top: var(--spacing-4);
+  }
+
+  .markdown-content :where(strong, span, a) {
+    display: inline-block;
+  }
+
+  .markdown-content :where(ul, ol) {
+    list-style: revert;
+    margin-top: var(--spacing-1);
+    padding-block-start: 18px;
+  }
 }
 
 /* =========================================================
